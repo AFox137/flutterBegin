@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geko/subWidgets/drawer/drawer.dart';
 import 'package:geko/subWidgets/formulario/formulario.dart';
 
 
@@ -14,6 +15,13 @@ class _registroState extends State<registro> {
 
   @override
   Widget build(BuildContext context) {
-    return formulario();
+    return Scaffold(
+      appBar: AppBar(
+            title: Text("Registro de clientes"),
+            backgroundColor: Colors.lightBlue
+            ),
+      drawer: NavDrawer(),      
+      body: formulario()
+      );
   }
 }
