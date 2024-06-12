@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:geko/URLs.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -31,23 +32,19 @@ class _formularioState extends State<formulario> {
     final telefono = _telefono.text;
     final mail = _mail.text;
     
-    
-    // debug!!!
-    
-    // print("nombre: $nombre");
-    // print("apellido: $apellido");
-    // print("telefono: $telefono");
-    // print("mail: $mail");
 
     try {
-      final url = Uri.parse(URLPost) ;  
+      final url = Uri.parse("http://10.0.2.2:8000/users");  
       var response = await http.post(url,
-      body: {
-        'nombre': nombre,
-        'apellido': apellido,
-        'telefono': telefono,
-        'mail': mail,
-      }
+      headers: <String, String>{ 
+          'Content-Type': 'application/json; charset=UTF-8', 
+        }, 
+      body: jsonEncode(<String, dynamic>{ 
+        'id':'0',
+        'name': nombre + apellido,
+        'telephone': telefono,
+        'email': mail,
+      })
       );
       if (response.statusCode == 200) {
         print('Datos enviados correctamente:');

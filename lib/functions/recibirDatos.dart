@@ -1,16 +1,16 @@
+import 'dart:ffi';
+
 class RecibirDatos{
 
   String nombre = '';
-  String apellido = '';
-  String telefono = '';
+  int telefono = 0;
   String mail = '';
 
-  RecibirDatos(this.nombre, this.apellido, this.telefono, this.mail);
+  RecibirDatos(this.nombre, this.telefono, this.mail);
 
   RecibirDatos.fromJson(Map<String, dynamic> json){
-    nombre = json['nombre'];
-    apellido = json['apellido'];
-    telefono = json['telefono'];
-    mail = json['mail'];
+    nombre = json['name'];
+    telefono = json['telephone'];
+    mail = json['email'];
   }
 }

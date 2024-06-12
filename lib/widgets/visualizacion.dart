@@ -17,12 +17,22 @@ class _visualizacionState extends State<visualizacion> {
 
   List<RecibirDatos>  data = [];
 
+  @override
+  void initState() {
+    super.initState();
+    MostrarDatos().then((fetchedData) {
+      setState(() {
+        data = fetchedData;
+      });
+    });
+  }
+
   Future<List<RecibirDatos>> MostrarDatos() async{
     
-    final response = await get(Uri.parse(URLGet));
+    final response = await get(Uri.parse('http://10.0.2.2:8000/users'));
 
-    print('Código de estado de la respuesta: ${response.statusCode}');
-    print('Cuerpo de la respuesta: ${response.body}');
+    // print('Código de estado de la respuesta: ${response.statusCode}');
+    // print('Cuerpo de la respuesta: ${response.body}');
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = jsonDecode(response.body);
@@ -32,6 +42,8 @@ class _visualizacionState extends State<visualizacion> {
       throw Exception('Error al cargar datos');
     }
   }
+
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -56,19 +68,19 @@ class _visualizacionState extends State<visualizacion> {
          body: //data.isEmpty
         //   ? Center(child: CircularProgressIndicator())
            ListView(
+              scrollDirection: Axis.horizontal,
               children: [
                 DataTable(
+                  columnSpacing: 10,
                   columns: [
                     DataColumn(label: Text('Nombre')),
-                    DataColumn(label: Text('Apellido')),
                     DataColumn(label: Text('Teléfono')),
                     DataColumn(label: Text('Mail')),
                   ],
                   rows: data.map((item) {
                     return DataRow(cells: [
                       DataCell(Text(item.nombre)),
-                      DataCell(Text(item.apellido)),
-                      DataCell(Text(item.telefono)),
+                      DataCell(Text(item.telefono.toString())),
                       DataCell(Text(item.mail)),
                     ]);
                   }).toList(),
