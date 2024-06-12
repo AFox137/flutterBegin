@@ -29,7 +29,7 @@ class _visualizacionState extends State<visualizacion> {
 
   Future<List<RecibirDatos>> MostrarDatos() async{
     
-    final response = await get(Uri.parse('http://10.0.2.2:8000/users'));
+    final response = await get(Uri.parse('URLUsers'));
 
     // print('Código de estado de la respuesta: ${response.statusCode}');
     // print('Cuerpo de la respuesta: ${response.body}');

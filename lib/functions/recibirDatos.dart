@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class RecibirDatos{
 
   String nombre = '';
