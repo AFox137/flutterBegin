@@ -56,6 +56,20 @@ class _NavDrawerState extends State<NavDrawer> {
             },
           ),
 
+          ListTile(
+            title: Text("prueba"),
+            leading: Icon(Icons.stacked_bar_chart),
+            onTap: () {
+              Navigator.popAndPushNamed(context, '/createDataBase');
+            },
+          ),
+          ListTile(
+            title: Text("Builder"),
+            leading: Icon(Icons.all_inbox),
+            onTap: () {
+              Navigator.popAndPushNamed(context, '/dataBaseBuilder');
+            },
+          ),
         ],
       ),
     );

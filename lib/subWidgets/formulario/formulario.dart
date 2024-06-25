@@ -34,11 +34,12 @@ class _formularioState extends State<formulario> {
     
 
     try {
-      final url = Uri.parse(URLUsers);  
+      final url = Uri.parse("http://10.0.2.2:8000/users");  
       var response = await http.post(url,
-      headers: <String, String>{ 
-          'Content-Type': 'application/json; charset=UTF-8', 
-        }, 
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }, 
       body: jsonEncode(<String, dynamic>{ 
         'id':'0',
         'name': nombre + apellido,

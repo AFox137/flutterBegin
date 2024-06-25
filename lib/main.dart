@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geko/customWidgets/database_builder.dart';
+import 'package:geko/customWidgets/prueba2.dart';
+import 'package:geko/customWidgets/pruebas.dart';
 import 'package:geko/subWidgets/drawer/drawer.dart';
 import 'package:geko/widgets/registro.dart';
 import 'package:geko/widgets/visualizacion.dart';
@@ -24,21 +27,20 @@ class MyApp extends StatelessWidget {
         '/visualizacion': (context) => visualizacion(),
         '/registro': (context) => registro(),
         '/main': (context) => MyApp(),
-
+        '/prueba': (context) => Prueba(),
+        '/dataBaseBuilder': (context) => DataBaseBuilder(),
       },
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.lightBlue,
-            title: Text('HAL'),
+            title: const Text('HAL'),
           ),
           body: Center(
-            child: Container(
-              child: Image.asset('assets/zorro.jpg'),
-          ),
+            child: Image.asset('assets/zorro.jpg'),
             
           ),
-          drawer: NavDrawer(),
+          drawer: const NavDrawer(),
           ),
       ),
     );

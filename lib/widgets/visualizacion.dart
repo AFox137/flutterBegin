@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geko/URLs.dart';
 import 'package:geko/subWidgets/drawer/drawer.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -29,10 +28,10 @@ class _visualizacionState extends State<visualizacion> {
 
   Future<List<RecibirDatos>> MostrarDatos() async{
     
-    final response = await get(Uri.parse('URLUsers'));
+    final response = await get(Uri.parse('http://10.0.2.2:8000/user/'));
 
-    // print('Código de estado de la respuesta: ${response.statusCode}');
-    // print('Cuerpo de la respuesta: ${response.body}');
+    print('Código de estado de la respuesta: ${response.statusCode}');
+    print('Cuerpo de la respuesta: ${response.body}');
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = jsonDecode(response.body);
@@ -42,8 +41,6 @@ class _visualizacionState extends State<visualizacion> {
       throw Exception('Error al cargar datos');
     }
   }
-
-  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
